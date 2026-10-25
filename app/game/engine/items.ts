@@ -150,7 +150,7 @@ export class Items {
       // Wall-thin gap between two rooms can put a page within range+cone
       // without it actually being visible — LOS keeps the prompt honest.
       if (d < 2.6 && to.normalize().dot(camDir) > 0.8 && this.hasLOS(camPos, p.mesh.position)) {
-        return { type: "page", index: i, label: "TAKE PAGE" };
+        return { type: "page", index: i, label: "페이지 가져오기" };
       }
     }
     for (let i = 0; i < this.waters.length; i++) {
@@ -159,15 +159,15 @@ export class Items {
       const to = this.vTo.subVectors(w.group.position, camPos);
       const d = to.length();
       if (d < 2.4 && to.normalize().dot(camDir) > 0.78 && this.hasLOS(camPos, w.group.position)) {
-        return { type: "water", index: i, label: "DRINK ALMOND WATER" };
+        return { type: "water", index: i, label: "아몬드 워터 마시기" };
       }
     }
     const toDoor = this.vTo.subVectors(this.level.exit.doorPos, camPos);
     const dd = toDoor.length();
     if (dd < 3 && toDoor.normalize().dot(camDir) > 0.7) {
       return this.allCollected
-        ? { type: "door", label: this.exitOpen ? "ESCAPE" : "PUSH THE DOOR" }
-        : { type: "door", label: `LOCKED — ${this.collected}/${TOTAL_PAGES} PAGES` };
+        ? { type: "door", label: this.exitOpen ? "탈출" : "문 밀기" }
+        : { type: "door", label: `잠김 — 페이지 ${this.collected}/${TOTAL_PAGES}` };
     }
     return null;
   }

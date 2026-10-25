@@ -25,7 +25,7 @@ const INITIAL_HUD: HudState = {
   totalPages: 8,
   stamina: 1,
   prompt: null,
-  objective: "COLLECT THE PAGES — 0/8",
+  objective: "페이지 수집 — 0/8",
   flashlight: true,
   sneaking: false,
   cheats: null,
@@ -70,13 +70,13 @@ export default function GameShell() {
       if (kind !== bannerKindRef.current) {
         bannerKindRef.current = kind;
         const hint =
-          kind === "COLLECT THE PAGES"
+          kind === "페이지 수집"
             ? isTouchRef.current
-              ? "PINNED TO THE WALLS — GET CLOSE, TAP TAKE PAGE"
-              : "PINNED TO THE WALLS — PRESS [E] TO TAKE THEM"
-            : kind === "FIND THE EXIT DOOR"
-              ? "ALL PAGES FOUND — A DOOR HAS UNLOCKED SOMEWHERE"
-              : "THROUGH THE DOOR — RUN";
+              ? "벽에 고정되어 있다 — 가까이 가서 페이지 가져오기 탭"
+              : "벽에 꽂혀 있다 — [E]를 눌러 가져오기"
+            : kind === "탈출구를 찾아라"
+              ? "페이지 전부 찾음 — 어딘가의 문이 열렸다"
+              : "문으로 — 뛰어라";
         setBanner({ title: h.objective, hint });
         if (bannerTimerRef.current) clearTimeout(bannerTimerRef.current);
         bannerTimerRef.current = setTimeout(() => setBanner(null), 5200);
@@ -169,10 +169,10 @@ export default function GameShell() {
           <div className="phone-spin h-16 w-10 rounded-md border-2 border-amber-100/60" />
 
           <div className="font-elite text-lg tracking-[0.35em] text-amber-100/80">
-            ROTATE YOUR DEVICE
+            기기를 가로로 돌리세요
           </div>
           <p className="font-elite max-w-xs text-center text-xs leading-5 tracking-[0.15em] text-amber-100/40">
-            the backrooms only exist in landscape
+            백룸은 가로 화면에서만 존재합니다
           </p>
         </div>
       )}
@@ -205,9 +205,9 @@ export default function GameShell() {
           {banner && (
             <div className="objective-pop absolute left-1/2 top-[28%] border-y border-amber-100/15 bg-black/45 px-10 py-4 text-center shadow-[0_0_50px_rgba(0,0,0,0.55)] backdrop-blur-[2px]">
               <div className="font-elite text-[11px] tracking-[0.55em] text-amber-100/55">
-                OBJECTIVE
+                목표
               </div>
-              <div className="font-elite mt-2 whitespace-nowrap text-2xl tracking-[0.3em] text-amber-50 [text-shadow:0_0_26px_rgba(255,230,160,0.7)]">
+              <div className="font-elite mt-2 whitespace-nowrap text-2xl tracking-[0.15em] text-amber-50 [text-shadow:0_0_26px_rgba(255,230,160,0.7)]">
                 {banner.title}
               </div>
               <div className="font-elite mt-3 text-[12px] tracking-[0.28em] text-amber-100/80">
@@ -219,27 +219,27 @@ export default function GameShell() {
           {/* active cheats — always visible while any cheat is on */}
           {hud.cheats && (
             <div className="font-elite absolute left-5 top-10 text-[11px] tracking-[0.25em] text-emerald-300/80 [text-shadow:0_0_10px_rgba(60,255,160,0.35)]">
-              CHEATS: {hud.cheats}
+              치트: {hud.cheats}
             </div>
           )}
 
           {/* sneaking indicator */}
           {hud.sneaking && (
             <div className="font-elite absolute bottom-14 left-1/2 -translate-x-1/2 text-[11px] tracking-[0.4em] text-amber-100/45">
-              — SNEAKING —
+              — 은신 중 —
             </div>
           )}
 
           {/* pages */}
           <div className="font-elite absolute bottom-4 left-5 text-sm tracking-[0.3em] text-amber-100/60">
-            PAGES {hud.pages}/{hud.totalPages}
+            페이지 {hud.pages}/{hud.totalPages}
           </div>
 
           {/* key hints (desktop only) */}
           {!isTouch && (
             <div className="font-elite absolute bottom-4 right-5 text-[11px] tracking-[0.25em] text-amber-100/35">
-              [F] TORCH {hud.flashlight ? "ON" : "OFF"} · [SHIFT] RUN · [C] SNEAK{" "}
-              {hud.sneaking ? "ON" : "OFF"}
+              [F] 손전등 {hud.flashlight ? "켬" : "끔"} · [SHIFT] 달리기 · [C] 은신{" "}
+              {hud.sneaking ? "켬" : "끔"}
             </div>
           )}
 
@@ -281,17 +281,17 @@ export default function GameShell() {
           {showCredits ? (
             <>
               <h2 className="vhs-title font-elite text-3xl tracking-[0.35em] text-amber-50/90">
-                CREDITS
+                크레딧
               </h2>
               <div className="font-elite mt-8 flex max-w-md flex-col items-center gap-3 text-center text-[13px] leading-6 tracking-[0.12em] text-amber-100/55">
-                <p>a game by StarKnightt</p>
+                <p>제작: StarKnightt</p>
                 <p className="text-amber-100/35">
-                  every wall, texture, sound and scream in here is generated
-                  by code. there are no asset files. there is no level file.
-                  each run builds a maze that has never existed before.
+                  이곳의 모든 벽, 텍스처, 소리, 비명은 코드로 생성됩니다.
+                  에셋 파일도, 레벨 파일도 없습니다. 매번 플레이할 때마다
+                  세상에 없던 미로가 새로 만들어집니다.
                 </p>
                 <p className="text-amber-100/35">
-                  built with three.js · next.js · webaudio
+                  three.js · next.js · webaudio로 제작
                 </p>
               </div>
               {!IS_CG && (
@@ -304,7 +304,7 @@ export default function GameShell() {
                 onClick={() => setShowCredits(false)}
                 className="font-elite mt-10 border border-amber-100/30 px-10 py-2.5 text-sm tracking-[0.4em] text-amber-100/70 transition-all hover:border-amber-100/80 hover:bg-amber-100/5"
               >
-                BACK
+                뒤로
               </ArmedButton>
             </>
           ) : (
@@ -316,29 +316,29 @@ export default function GameShell() {
                 BACKROOMS
               </h1>
               <p className="font-elite mt-6 max-w-md text-center text-sm leading-6 text-amber-100/45">
-                you tripped through a wrong corner of reality, and the world
-                healed shut behind you. someone was here before — they left 8
-                pages pinned to these walls. take them all and the door will
-                show itself. and when the lights start to die, don&apos;t let
-                it hear you walk.
+                현실의 잘못된 모퉁이로 미끄러졌고, 세상은 당신 뒤로
+                스르르 닫혀 버렸습니다. 누군가 먼저 여기 있었습니다 — 벽에
+                8장의 페이지를 꽂아 두었죠. 전부 모으면 문이 모습을 드러냅니다.
+                그리고 불빛이 꺼지기 시작하면, 걷는 소리를
+                들키지 마세요.
               </p>
 
               {isTouch ? (
                 <div className="font-elite mt-7 grid grid-cols-2 gap-x-10 gap-y-1.5 text-[12px] tracking-[0.2em] text-amber-100/35">
-                  <span>LEFT STICK — WALK</span>
-                  <span>RIGHT SIDE — LOOK</span>
-                  <span>STICK FULLY OUT — RUN</span>
-                  <span>BUTTONS — TORCH / SNEAK</span>
+                  <span>왼쪽 스틱 — 걷기</span>
+                  <span>오른쪽 화면 — 시점</span>
+                  <span>스틱 끝까지 — 달리기</span>
+                  <span>버튼 — 손전등 / 은신</span>
                 </div>
               ) : (
                 <div className="font-elite mt-7 grid grid-cols-2 gap-x-10 gap-y-1.5 text-[12px] tracking-[0.2em] text-amber-100/35">
-                  <span>WASD — WALK</span>
-                  <span>MOUSE — LOOK</span>
-                  <span>SHIFT — RUN</span>
-                  <span>C — SNEAK</span>
-                  <span>F — FLASHLIGHT</span>
-                  <span>E — INTERACT</span>
-                  <span>ESC — PAUSE</span>
+                  <span>WASD — 걷기</span>
+                  <span>마우스 — 시점</span>
+                  <span>SHIFT — 달리기</span>
+                  <span>C — 은신</span>
+                  <span>F — 손전등</span>
+                  <span>E — 상호작용</span>
+                  <span>ESC — 일시정지</span>
                 </div>
               )}
 
@@ -351,18 +351,18 @@ export default function GameShell() {
                   <svg viewBox="0 0 10 12" className="h-3 w-3 fill-current" aria-hidden="true">
                     <path d="M0 0 L10 6 L0 12 Z" />
                   </svg>
-                  {booted ? "ENTER" : "LOADING TAPE…"}
+                  {booted ? "입장" : "테이프 로딩 중…"}
                 </button>
                 <button
                   onClick={() => setShowCredits(true)}
                   className="font-elite border border-amber-100/40 px-8 py-3 text-base tracking-[0.3em] text-amber-100/75 transition-all hover:border-amber-100/80 hover:bg-amber-100/5 hover:text-amber-100"
                 >
-                  CREDITS
+                  크레딧
                 </button>
               </div>
 
               <p className="font-elite mt-6 text-[11px] tracking-[0.3em] text-amber-100/25">
-                HEADPHONES STRONGLY RECOMMENDED
+                헤드폰 사용을 강력히 권장합니다
               </p>
             </>
           )}
@@ -373,26 +373,26 @@ export default function GameShell() {
       {state === "paused" && (
         <Overlay>
           <h2 className="font-elite text-4xl tracking-[0.3em] text-amber-100/80">
-            PAUSED
+            일시정지
           </h2>
           <p className="font-elite mt-4 text-sm tracking-[0.2em] text-amber-100/40">
-            it is still in there. it does not pause.
+            그것은 아직 그 안에 있다. 멈추지 않는다.
           </p>
           <ArmedButton
             onClick={resume}
             disabled={resuming}
             className="font-elite mt-8 border border-amber-100/30 px-10 py-3 tracking-[0.4em] text-amber-100/80 transition-all hover:border-amber-100/80 hover:bg-amber-100/5 disabled:opacity-50"
           >
-            {resuming ? "RESUMING…" : "RESUME"}
+            {resuming ? "돌아가는 중…" : "계속하기"}
           </ArmedButton>
           <ArmedButton
             onClick={exitToMenu}
             className="font-elite mt-4 border border-amber-100/15 px-10 py-2.5 text-sm tracking-[0.4em] text-amber-100/45 transition-all hover:border-red-300/50 hover:text-red-200/80 disabled:opacity-50"
           >
-            EXIT TO MENU
+            메뉴로 나가기
           </ArmedButton>
           <p className="font-elite mt-3 text-[10px] tracking-[0.25em] text-amber-100/20">
-            THE RUN IS LOST. THE PAGES STAY.
+            이번 판은 사라진다. 페이지는 남는다.
           </p>
           {!IS_CG && (
             <div className="mt-8 flex items-center gap-8">
@@ -407,19 +407,19 @@ export default function GameShell() {
       {state === "dead" && (
         <Overlay tint="red">
           <h2 className="font-elite glitch-text text-5xl tracking-[0.25em] text-red-300/90 [text-shadow:0_0_40px_rgba(255,40,40,0.4)]">
-            YOU WERE TAKEN
+            붙잡혔다
           </h2>
           <p className="font-elite mt-6 text-sm tracking-[0.25em] text-red-200/40">
-            PAGES FOUND — {stats.pages}/8 · SURVIVED — {mmss}
+            찾은 페이지 — {stats.pages}/8 · 생존 — {mmss}
           </p>
           <p className="font-elite mt-2 text-xs tracking-[0.2em] text-red-200/30">
-            the backrooms keep what they catch.
+            백룸은 잡은 것을 놓아주지 않는다.
           </p>
           <ArmedButton
             onClick={retry}
             className="font-elite mt-10 border border-red-300/30 px-10 py-3 tracking-[0.4em] text-red-200/80 transition-all hover:border-red-300/80 hover:bg-red-300/5 disabled:opacity-40"
           >
-            WAKE UP AGAIN
+            다시 눈을 뜬다
           </ArmedButton>
         </Overlay>
       )}
@@ -428,22 +428,22 @@ export default function GameShell() {
       {state === "won" && (
         <Overlay tint="light">
           <h2 className="font-elite text-5xl tracking-[0.25em] text-amber-50 [text-shadow:0_0_50px_rgba(255,255,220,0.8)]">
-            YOU GOT OUT
+            탈출했다
           </h2>
           <p className="font-elite mt-6 text-sm tracking-[0.25em] text-amber-100/60">
-            ALL 8 PAGES · ESCAPED IN {mmss}
+            페이지 8장 모두 · {mmss} 만에 탈출
           </p>
           <p className="font-elite mt-2 text-xs tracking-[0.2em] text-amber-100/40">
-            …or did you just noclip into level 1?
+            …아니면 이제 레벨 1로 노클립한 건가?
           </p>
           <ArmedButton
             onClick={retry}
             className="font-elite mt-10 border border-amber-100/40 px-10 py-3 tracking-[0.4em] text-amber-100/90 transition-all hover:border-amber-100/90 hover:bg-amber-100/10 disabled:opacity-40"
           >
-            GO BACK IN
+            다시 들어가기
           </ArmedButton>
           {!IS_CG && (
-            <GitHubBadge className="mt-8" label="escaped? leave a star" />
+            <GitHubBadge className="mt-8" label="탈출했다면 별 하나 눌러주세요" />
           )}
         </Overlay>
       )}
@@ -627,7 +627,7 @@ function TouchControls({
             }`}
             onPointerDown={() => engineRef.current?.setSneak(!sneaking)}
           >
-            SNEAK
+            은신
           </button>
           <button
             className={`font-elite rounded border px-4 py-3 text-[11px] tracking-[0.2em] ${
@@ -637,7 +637,7 @@ function TouchControls({
             }`}
             onPointerDown={() => engineRef.current?.touchTorch()}
           >
-            TORCH
+            손전등
           </button>
         </div>
       </div>

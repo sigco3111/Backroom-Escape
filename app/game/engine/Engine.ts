@@ -316,7 +316,7 @@ export class Engine {
       if (e.code === "ControlLeft" || e.code === "ControlRight") {
         if (!this.ctrlHintShown) {
           this.ctrlHintShown = true;
-          this.toast("SNEAK IS ON [C] — DON'T HOLD CTRL, CTRL+W CLOSES THE TAB");
+          this.toast("은신은 [C] — CTRL을 누르지 마세요. CTRL+W는 탭을 닫습니다");
         }
         return;
       }
@@ -421,7 +421,7 @@ export class Engine {
       this.cheatBuffer = (this.cheatBuffer + e.key.toLowerCase()).slice(-10);
       if (!this.cheats.unlocked && this.cheatBuffer.endsWith("redrum")) {
         this.cheats.unlocked = true;
-        this.toast("CHEATS UNLOCKED — [G]OD [N]OCLIP [B]RIGHT [X]FREEZE [M]AP [P]AGES [T]ELEPORT");
+        this.toast("치트 해금 — [G]무적 [N]벽통과 [B]밝게 [X]엔티티정지 [M]지도 [P]페이지 [T]텔레포트");
         return;
       }
     }
@@ -430,12 +430,12 @@ export class Engine {
     switch (e.code) {
       case "KeyG":
         this.cheats.god = !this.cheats.god;
-        this.toast(`GOD MODE ${this.cheats.god ? "ON" : "OFF"}`);
+        this.toast(`무적 모드 ${this.cheats.god ? "켬" : "끔"}`);
         break;
       case "KeyN":
         this.cheats.noclip = !this.cheats.noclip;
         this.player.noclip = this.cheats.noclip;
-        this.toast(`NOCLIP ${this.cheats.noclip ? "ON — through the walls" : "OFF"}`);
+        this.toast(`벽통과 ${this.cheats.noclip ? "켬 — 벽을 지나감" : "끔"}`);
         break;
       case "KeyB":
         this.cheats.fullbright = !this.cheats.fullbright;
@@ -446,15 +446,15 @@ export class Engine {
           this.scene.remove(this.brightLight);
           this.brightLight = null;
         }
-        this.toast(`FULLBRIGHT ${this.cheats.fullbright ? "ON" : "OFF"}`);
+        this.toast(`전체 밝기 ${this.cheats.fullbright ? "켬" : "끔"}`);
         break;
       case "KeyX":
         this.cheats.freeze = !this.cheats.freeze;
-        this.toast(`ENTITY ${this.cheats.freeze ? "FROZEN" : "RELEASED"}`);
+        this.toast(`엔티티 ${this.cheats.freeze ? "정지" : "해제"}`);
         break;
       case "KeyM":
         this.cheats.map = !this.cheats.map;
-        this.toast(`MAP ${this.cheats.map ? "ON" : "OFF"}`);
+        this.toast(`지도 ${this.cheats.map ? "켬" : "끔"}`);
         break;
       case "KeyP": {
         let grabbed = 0;
@@ -465,7 +465,7 @@ export class Engine {
           }
         });
         if (grabbed > 0 && this.entity.state === "dormant") this.entity.activate();
-        this.toast(`PAGES GRANTED (+${grabbed}) — find the door`);
+        this.toast(`페이지 지급됨 (+${grabbed}) — 문을 찾아라`);
         this.pushHud(true);
         break;
       }
@@ -478,7 +478,7 @@ export class Engine {
         );
         this.player.vel.set(0, 0, 0);
         this.player.yaw = Math.atan2(-exit.facing.x, -exit.facing.z) + Math.PI;
-        this.toast("TELEPORTED TO THE EXIT DOOR");
+        this.toast("탈출구로 텔레포트됨");
         break;
       }
     }
@@ -514,7 +514,7 @@ export class Engine {
       this.fear = Math.max(0, this.fear - 0.3);
       this.audio.drink();
       wavedash.achieve("ALMOND_WATER");
-      this.toast("STAMINA RESTORED — YOUR HEART SLOWS");
+      this.toast("스태미나 회복 — 심장이 진정된다");
       this.pushHud(true);
     } else if (hit.type === "door" && this.items.allCollected && !this.items.exitOpen) {
       this.items.openExit();
@@ -899,21 +899,21 @@ export class Engine {
   private pushHud(force = false) {
     void force;
     const active: string[] = [];
-    if (this.cheats.god) active.push("GOD");
-    if (this.cheats.noclip) active.push("NOCLIP");
-    if (this.cheats.fullbright) active.push("BRIGHT");
-    if (this.cheats.freeze) active.push("FROZEN");
-    if (this.cheats.map) active.push("MAP");
+    if (this.cheats.god) active.push("무적");
+    if (this.cheats.noclip) active.push("벽통과");
+    if (this.cheats.fullbright) active.push("밝게");
+    if (this.cheats.freeze) active.push("정지");
+    if (this.cheats.map) active.push("지도");
     this.callbacks.onHud({
       pages: this.items.collected,
       totalPages: TOTAL_PAGES,
       stamina: this.player.stamina,
       prompt: this.lastPrompt,
       objective: !this.items.allCollected
-        ? `COLLECT THE PAGES — ${this.items.collected}/${TOTAL_PAGES}`
+        ? `페이지 수집 — ${this.items.collected}/${TOTAL_PAGES}`
         : this.items.exitOpen
-          ? "GET OUT"
-          : "FIND THE EXIT DOOR",
+          ? "탈출하라"
+          : "탈출구를 찾아라",
       flashlight: this.player.flashlightOn,
       sneaking: this.player.sneaking,
       cheats: active.length > 0 ? active.join(" · ") : null,

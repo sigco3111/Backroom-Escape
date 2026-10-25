@@ -1,160 +1,94 @@
-# BACKROOMS — LEVEL 0
+# BACKROOMS — LEVEL 0 (한국어판)
 
-A first-person survival horror game that runs entirely in the browser.
-Built with **Next.js + Three.js**. Every asset — textures, the monster, the
-level, every sound — is **generated procedurally at runtime**. There are no
-image or audio files in this project.
+브라우저에서 바로 실행되는 1인칭 서바이벌 호러 게임입니다.
+**Next.js + Three.js**로 만들어졌고, 텍스처·괴물·레벨·모든 사운드가
+**실행 시점에 코드로 절차적 생성**됩니다. 이미지나 오디오 에셋 파일이
+하나도 없는 프로젝트입니다.
 
-![genre](https://img.shields.io/badge/genre-horror-1a1a1a) ![engine](https://img.shields.io/badge/three.js-r184-b8a440)
+> 이 저장소는 [StarKnightt/Backroom-Escape](https://github.com/StarKnightt/Backroom-Escape)의
+> 한국어 로컬라이즈 포크입니다. 원본 README는 [README.en.md](README.en.md)에서 볼 수 있습니다.
+> 게임 메커닉스와 코드 구조는 원본과 동일하며, 화면에 표시되는 문자열만 한국어로 번역했습니다.
 
-## The game
+**플레이:** https://sigco3111.github.io/Backroom-Escape/ (키보드+마우스 권장, 모바일 가로 화면 지원)
 
-You tripped through a wrong corner of reality, and the world healed shut
-behind you. Level 0: an endless office of mono-yellow wallpaper, damp
-carpet and buzzing fluorescent light. Someone was here before you — they
-left pages pinned to the walls.
+## 게임 소개
 
-- **Find all 8 journal pages** pinned to the walls. The other scrawls —
-  stick figures, spirals, tallies, red handprints — are from whoever was
-  here before you. They are not instructions. Probably.
-- **Follow the dying lights.** The fixture nearest every page sputters.
-  One page always hangs a short walk from where you wake up.
-- **Find the exit door** (look for the green glow) — it only opens once you
-  hold every page. The red EXIT signs hanging in the corridors are lying.
-- **Drink the almond water.** Four bottles are abandoned somewhere in the
-  maze — full stamina, and your heart stops hammering for a while.
-- **Avoid the Wanderer.** It roams the halls, kills the lights around it,
-  and hunts by sound and sight. If you stare at it, it freezes… for a while.
-  If it screams — run.
-- Sometimes a dead light far down a corridor arcs back on for a few
-  seconds. Whether you walk toward it is up to you.
-- Deep in the maze there are pockets where the fluorescents burn the wrong
-  color — a sick red, a pale hospital green. Nothing about those places is
-  different. Probably.
+현실의 잘못된 모퉁이로 미끄러졌고, 세상은 당신 뒤로 스르르 닫혀 버렸습니다.
+레벨 0: 모노 옐로 벽지, 축축한 카펫, 윙윙거리는 형광등이 끝없이 이어지는 사무실.
+누군가 먼저 여기 있었습니다 — 벽에 페이지를 꽂아 두었죠.
 
-### Controls
+- **벽에 고정된 일지 페이지 8장을 모두 찾으세요.** 다른 낙서들 — 막대 인간,
+  나선, 탈리 표시, 붉은 손자국 — 은 먼저 온 누군가의 흔적입니다. 지시가
+  아닙니다. 아마도요.
+- **꺼져 가는 불빛을 따라가세요.** 모든 페이지 근처의 조명은 파르르 떨립니다.
+  한 장은 언제나 눈을 뜬 곳에서 가까운 곳에 걸려 있습니다.
+- **탈출구를 찾으세요** (초록빛을 찾으세요) — 페이지를 전부 가지고 있어야만
+  열립니다. 복도에 매달린 붉은 출구 표지판은 거짓말입니다.
+- **아몬드 워터를 마시세요.** 병 4개가 미로 어딘가에 버려져 있습니다 —
+  스태미나 완전 회복, 심장 박동도 잠시 진정됩니다.
+- **떠돌이(Wanderer)를 피하세요.** 복도를 배회하며 주변 불을 꺼뜨리고,
+  소리와 시야로 사냥합니다. 쳐다보면 얼어붙습니다… 잠시 동안만.
+  비명이 울리면 — 뛰세요.
+- 복도 저 멀리 꺼진 조명이 몇 초간 다시 켜질 때가 있습니다. 그쪽으로
+  걸어갈지 말지는 당신의 선택입니다.
+- 미로 깊은 곳에는 형광등이 잘못된 색으로 타는 구역이 있습니다 — 병든
+  붉은색, 창백한 병원 초록. 그곳이 다른 점은 없습니다. 아마도요.
 
-| Key | Action |
+### 조작
+
+| 키 | 동작 |
 | --- | --- |
-| WASD | Move |
-| Mouse | Look |
-| Shift | Sprint (limited stamina, cancels sneak) |
-| C | Toggle sneak — silent feet, slower, much harder for it to notice you |
-| F | Flashlight |
-| E | Interact (pages / door) |
-| Esc | Pause |
+| WASD | 걷기 |
+| 마우스 | 시점 |
+| SHIFT | 달리기 |
+| C | 은신 |
+| F | 손전등 |
+| E | 상호작용 |
+| ESC | 일시정지 |
 
-**On phones/tablets** the game switches to touch controls automatically:
-left virtual stick to walk (push it all the way to run), drag the right
-side of the screen to look, on-screen TORCH / SNEAK / interact buttons.
-Portrait orientation shows a "rotate your device" screen — Level 0 only
-exists in landscape. Rendering runs at the device's native resolution
-(pixel ratio capped at 2).
+모바일: 왼쪽 스틱 걷기, 오른쪽 화면 시점, 스틱 끝까지 밀면 달리기,
+버튼으로 손전등/은신. 가로 화면 전용입니다.
 
-Headphones strongly recommended. Each run generates a fresh maze from a new
-seed.
+### 치트 (개발용)
 
-### Dev cheats
+메뉴에서 `redrum`을 입력하면 치트가 해금됩니다:
+`[G]` 무적 · `[N]` 벽통과 · `[B]` 전체 밝게 · `[X]` 엔티티 정지 ·
+`[M]` 미니맵 · `[P]` 페이지 지급 · `[T]` 탈출구로 텔레포트
 
-Type **`redrum`** at any point mid-run to unlock the cheat keys, then:
+## 한글화 내용
 
-| Key | Cheat |
-| --- | --- |
-| G | God mode — it can't take you |
-| N | Noclip — walk through walls, 2.4× speed |
-| B | Fullbright — floodlight the whole level |
-| X | Freeze / release the entity |
-| P | Grant all 8 pages instantly |
-| T | Teleport to the exit door |
+- 게임 내 모든 UI 문자열 한국어 번역: 메뉴, HUD(목표/페이지/스태미나),
+  일시정지·사망·탈출 화면, 치트 토스트, 상호작용 프롬프트, 터치 컨트롤
+- 벽의 일지 페이지 8장 전체 번역 (캔버스 텍스처로 렌더링되는 손글씨 노트)
+- 출구(EXIT) 표지, 아몬드 워터 라벨 등 캔버스 텍스처 텍스트 번역
+- 한국어 글리프용 **Nanum Gothic Coding** 폰트 내장 (OFL 라이선스) —
+  타자기 스타일 UI가 한글에서도 등폭 느낌을 유지합니다
+- 페이지 메타데이터(title/description/OG/JSON-LD) 한국어화, `lang="ko"`
 
-A toast confirms every toggle, and while any cheat is active a green
-`CHEATS: …` line stays pinned under the objective so you always know
-what's on.
+## 기술 스택
 
-## Tech highlights
+- **Next.js** (정적 익스포트, `CG_EXPORT=1`) + **Three.js**
+- 텍스처·모델·사운드 전부 런타임 절차 생성 (WebAudio)
+- GitHub Actions로 GitHub Pages 자동 배포
 
-- **Authentic Level 0 layout** — one huge open floor "randomly segmented"
-  into rooms by thin partition walls (recursive division with door gaps),
-  exactly like the original 2002 photo: chevron wallpaper, beige carpet,
-  drop ceiling, columns of rectangular fluorescent fixtures. **Every room
-  is enterable** — wall-aware BFS guarantees full connectivity.
-- **Procedural PBR textures** — chevron wallpaper, carpet, ceiling tiles,
-  doors and the entity's skin are painted onto canvases at boot (albedo +
-  normal maps derived via Sobel-filtered height fields + roughness maps).
-- **Full 3D player character** — articulated body (hips, knees) visible
-  when you look down, plus a first-person fist gripping a black torch:
-  four articulated fingers (proximal/middle/distal segments with knuckle
-  joints) wrapped around the barrel, thumb on the switch, jacket cuff at
-  the wrist. The spotlight beams out of the torch lens.
-- **Articulated 3D entity** — two-segment limbs with knees and elbows,
-  skeletal hands with four too-long fingers that splay when it lunges, a
-  gaunt lathe-modeled skull, sunken ribs, and procedural gait/twitch
-  animation. A* pathfinding (wall-edge aware) with a
-  roam / stalk / chase / search state machine, freeze-when-observed
-  behavior, and a "horror director" that quietly relocates it near you if
-  things stay calm too long.
-- **Dynamic light orchestration** — hundreds of emissive fixtures (single
-  InstancedMesh with HDR instance colors) backed by a pool of 12 real point
-  lights assigned to the nearest fixtures each frame. The entity suppresses
-  lights around itself.
-- **100% synthesized audio** — WebAudio graph: fluorescent hum, room tone,
-  dissonant fear drone, heartbeat scheduler, footsteps, whispers, the
-  chase screech, and a procedural convolution reverb.
-- **Post-processing** — bloom, FXAA, plus a custom "fear shader": film
-  grain, heartbeat-synced vignette, chromatic aberration and VHS tearing
-  that all scale with a composite fear level.
-- **Hardened input** — the game stays in the browser tab (no forced
-  fullscreen); the pointer lock keeps the cursor captured while playing.
-  Relocks respect Chromium's ~1.3s cooldown, a watchdog pauses the game
-  within half a second if the lock silently dies (so a free cursor can
-  never wander onto the close button unnoticed), a grace window swallows
-  the garbage mouse deltas Chromium fires as the lock engages, spike
-  deltas are dropped, overlay buttons ignore the second half of accidental
-  double-clicks, and the frame loop is allocation-free (no GC stutter).
-  Sneak lives on C, not Ctrl — players hold their sneak key out of habit,
-  and a held Ctrl turns W into Ctrl+W, which closes the tab and cannot be
-  blocked by JS. Pressing Ctrl in-game shows a one-time "sneak is on C"
-  toast. OS key repeats are filtered so held keys can't strobe toggles
-  (the old cause of phantom footsteps while sneaking).
-- **Mobile support** — touch joystick + look pad + on-screen buttons,
-  landscape enforcement, native-resolution rendering, no pointer lock.
-  Tapping ENTER requests fullscreen + landscape orientation lock (Android;
-  iPhone Safari has no Fullscreen API — add to home screen instead, the
-  web manifest declares `display: fullscreen`). Desktop stays in-tab.
-  Favicon/app icons are procedurally drawn by `scripts/genicon.mjs`
-  (multi-size .ico + PNG + apple-touch-icon + manifest icons)
-  required.
-
-## Run it
+## 로컬 실행
 
 ```bash
 pnpm install
-pnpm dev      # http://localhost:3000
+pnpm dev          # 개발 서버
+CG_EXPORT=1 pnpm build   # 정적 익스포트 (out/)
 ```
 
-## Dev smoke tests
+## 크레딧
 
-Headless Edge scripts (require a local Edge install):
+- 원본 게임: [StarKnightt](https://github.com/StarKnightt) —
+  [Backroom-Escape](https://github.com/StarKnightt/Backroom-Escape)
+  (X: [@prasenx](https://x.com/prasenx))
+- 한국어 번역·배포: 이 포크
+- 한국어 폰트: Nanum Gothic Coding (나눔고딕코딩) — SIL Open Font License
 
-```bash
-node scripts/smoke.mjs     # boot + walk + screenshots
-node scripts/inspect.mjs   # staged scenes: corridor, entity, page, door, body
-node scripts/flow.mjs      # page pickup -> death -> retry
-node scripts/diag.mjs      # bright-lit geometry/model diagnostics
-node scripts/cheats.mjs    # redrum unlock + every cheat toggle
-node scripts/mobile.mjs    # emulated phone: rotate prompt + touch controls
-node scripts/entity-closeup.mjs  # entity frozen dead ahead + turntable + face close-up (model review)
-```
+## 라이선스
 
-Screenshots land in `scripts/shots/`.
-
-## Portal build (CrazyGames etc.)
-
-```bash
-node scripts/packcg.mjs    # -> backrooms-crazygames.zip (index.html at root)
-node scripts/cgtest.mjs    # proves the zip boots when served from a subfolder
-```
-
-`CG_EXPORT=1` switches the build to a fully static export with relative
-asset paths, so the bundle runs from any CDN subfolder. The Vercel
-deployment is unaffected.
+원본 저장소에는 라이선스 파일이 없습니다. 원작자의 모든 권리는 원작자에게
+있으며, 이 포크는 원작자의 코드를 수정 없이 존중하는 범위에서 번역만
+추가한 비공식 한국어판입니다. 문제가 있다면 저장소 이슈로 알려 주세요.

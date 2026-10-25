@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-elite: var(--font-elite), "Courier New", monospace;
+  --font-elite: var(--font-elite), var(--font-ngc), "Courier New", monospace;
 }
 
 html,
@@ -11,7 +11,7 @@ body {
 }
 
 .font-elite {
-  font-family: var(--font-elite), "Courier New", monospace;
+  font-family: var(--font-elite), var(--font-ngc), "Courier New", monospace;
 }
 
 /* ------------------------------------------------------------------ */

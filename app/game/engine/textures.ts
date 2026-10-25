@@ -396,14 +396,14 @@ export function makeLightPanelTexture(): THREE.CanvasTexture {
 /* ------------------------------------ */
 
 export const PAGE_TEXTS: string[][] = [
-  ["DAY 1?", "noclipped through the", "office floor. carpet is", "damp. the hum never", "stops. never."],
-  ["the lights go out", "when IT walks.", "count the seconds.", "it counts too."],
-  ["DON'T RUN.", "running makes noise.", "noise makes it", "curious."],
-  ["i saw it standing in", "the dark today.", "it didn't move.", "it was watching me", "blink."],
-  ["the walls taste like", "old paper. i licked", "them. i'm sorry.", "i was so hungry."],
-  ["if you look at it,", "it stops. it waits.", "your eyes get dry.", "you WILL blink."],
-  ["found a door once.", "green light above it.", "it was humming a", "different song."],
-  ["8 pages. that's all", "i had left. if you", "found them all —", "the exit knows you.", "RUN FOR IT."],
+  ["1일차?", "사무실 바닥을 뚫고", "노클립했다. 카펫은", "축축하다. 그 윙윙거림은", "멈추지 않는다. 절대."],
+  ["그것이 걸으면", "불이 꺼진다.", "초를 세어라.", "그것도 세고 있다."],
+  ["뛰지 마라.", "달리면 소리가 난다.", "소리는 그것을", "호기심나게 한다."],
+  ["오늘 어둠 속에", "서 있는 걸 봤다.", "움직이지 않았다.", "내가 눈을 깜빡이는 걸", "보고 있었다."],
+  ["벽은 낡은 종이", "맛이 난다. 핥아봤다.", "미안하다.", "너무 배가 고팠다."],
+  ["쳐다보면,", "멈춘다. 기다린다.", "눈이 마른다.", "너는 반드시 깜빡인다."],
+  ["한번은 문을 봤다.", "위에 초록불이 있었다.", "문은 다른 노래를", "흥얼거리고 있었다."],
+  ["페이지 8장. 그게", "남은 전부였다. 전부", "찾았다면 —", "탈출구가 너를 안다.", "뛰어라."],
 ];
 
 export function makePageTexture(seed: number, index: number): THREE.CanvasTexture {
@@ -530,7 +530,7 @@ export function makeExitSignTexture(): THREE.CanvasTexture {
   ctx.font = "bold 64px Arial, sans-serif";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText("EXIT", W / 2, H / 2 + 4);
+  ctx.fillText("출구", W / 2, H / 2 + 4);
   ctx.strokeStyle = "rgba(60,255,110,0.6)";
   ctx.lineWidth = 4;
   ctx.strokeRect(4, 4, W - 8, H - 8);
@@ -555,7 +555,7 @@ export function makeFalseExitSignTexture(
   ctx.font = "bold 56px Arial, sans-serif";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText("EXIT", W / 2 - arrow * 22, H / 2 + 4);
+  ctx.fillText("출구", W / 2 - arrow * 22, H / 2 + 4);
 
   // chevron arrow
   ctx.beginPath();
@@ -606,11 +606,11 @@ export function makeWaterLabelTexture(seed: number): THREE.CanvasTexture {
   ctx.fillStyle = "#3c2f18";
   ctx.textAlign = "center";
   ctx.font = "bold 30px Georgia, serif";
-  ctx.fillText("ALMOND", W / 2, 52);
-  ctx.fillText("WATER", W / 2, 86);
+  ctx.fillText("아몬드", W / 2, 52);
+  ctx.fillText("워터", W / 2, 86);
   ctx.font = "italic 13px Georgia, serif";
   ctx.fillStyle = "#6b5733";
-  ctx.fillText("· bottled where it is always 3 pm ·", W / 2, 110);
+  ctx.fillText("· 언제나 오후 3시에 병입 ·", W / 2, 110);
 
   return tex(canvas, { srgb: true, repeat: false });
 }
