@@ -11,6 +11,10 @@
 
 **플레이:** https://sigco3111.github.io/Backroom-Escape/ (키보드+마우스 권장, 모바일 가로 화면 지원)
 
+## 📸 실제 실행 화면
+
+![Backrooms Level 0 한국어판 실제 화면](5-Backroom-Escape.jpg)
+
 ## 게임 소개
 
 현실의 잘못된 모퉁이로 미끄러졌고, 세상은 당신 뒤로 스르르 닫혀 버렸습니다.
